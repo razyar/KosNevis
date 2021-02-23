@@ -4,7 +4,7 @@ Say everything, fuck everyone
 
 ## Installing requirements:
 ```
-	python3
+  python3
   PySide2
   PyQt5
 ```
