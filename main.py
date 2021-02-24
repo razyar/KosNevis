@@ -5,10 +5,9 @@ from PySide2.QtCore import (QCoreApplication, QPropertyAnimation, QDate, QDateTi
 from PySide2.QtGui import (QBrush, QColor, QConicalGradient, QCursor, QFont, QFontDatabase, QIcon, QKeySequence, QLinearGradient, QPalette, QPainter, QPixmap, QRadialGradient)
 from PySide2.QtWidgets import *
 
-# GUI FILE
 from ui_main import Ui_MainWindow
+import os
 
-# IMPORT FUNCTIONS
 from ui_functions import *
 
 class MainWindow(QMainWindow):
@@ -17,20 +16,13 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        ## TOGGLE/BURGUER MENU
-        ########################################################################
         self.ui.Btn_Toggle.clicked.connect(lambda: UIFunctions.toggleMenu(self, 250, True))
 
-        ## PAGES
-        ########################################################################
 
-        # PAGE 1
         self.ui.btn_page_1.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_1))
 
-        # PAGE 2
         self.ui.btn_page_2.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_2))
 
-        # PAGE 3
         self.ui.btn_page_3.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_3))
 
         self.ui.pushButton_7.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_4))
@@ -38,10 +30,45 @@ class MainWindow(QMainWindow):
         self.ui.pushButton_15.clicked.connect(self.ui.client)
         self.ui.pushButton_2.clicked.connect(self.ui.client)
         self.ui.lineEdit.returnPressed.connect(self.ui.client)
-        ## SHOW ==> MAIN WINDOW
-        ########################################################################
+
+        self.ui.pushButton_11.clicked.connect(self.ui.file_selector)
+
+        def save_name():
+            namepath = os.getcwd()
+            os.chdir(namepath)
+            name = open('name.kos', 'w')
+            name_text = self.ui.lineEdit_2.text()
+            name.write(name_text)
+            name.close()
+
+        self.ui.lineEdit_2.returnPressed.connect(lambda: self.ui.label_7.setText(self.ui.lineEdit_2.text()))
+        self.ui.lineEdit_2.returnPressed.connect(save_name)
+        self.ui.pushButton_8.clicked.connect(lambda: self.ui.label_7.setText(self.ui.lineEdit_2.text()))
+        self.ui.pushButton_8.clicked.connect(save_name)
+
+        def save_username():
+            usernamenamepath = os.getcwd()
+            os.chdir(usernamenamepath)
+            username = open('username.kos', 'w')
+            username_text = self.ui.lineEdit_3.text()
+            username.write('@'+username_text)
+            username.close()
+
+        self.ui.lineEdit_3.returnPressed.connect(lambda: self.ui.label_8.setText('@'+self.ui.lineEdit_3.text()))
+        self.ui.lineEdit_3.returnPressed.connect(save_username)
+        self.ui.pushButton_9.clicked.connect(lambda: self.ui.label_8.setText('@'+self.ui.lineEdit_3.text()))
+        self.ui.pushButton_9.clicked.connect(save_username)
+        
+
+
+        self.ui.lineEdit_4.returnPressed.connect(self.ui.bio_edit)
+        self.ui.lineEdit_4.returnPressed.connect(save_username)
+        self.ui.pushButton_10.clicked.connect(self.ui.bio_edit)
+        self.ui.pushButton_10.clicked.connect(save_username)
+
+
+
         self.show()
-        ## ==> END ##
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

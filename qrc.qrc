@@ -1,5 +1,8 @@
 <RCC>
   <qresource prefix="1">
+    <file>icons/menu/Screenshot (46).png</file>
+    <file>icons/menu/Screenshot (42).png</file>
+    <file>icons/menu/Screenshot (43).png</file>
     <file>icons/Contacts/126273569_3504157566300479_6647481170704799879_n.png</file>
     <file>icons/Contacts/photo_2020-04-04_23-02-52.png</file>
     <file>icons/Contacts/photo_2021-02-10_19-15-11-ConvertImage.png</file>
